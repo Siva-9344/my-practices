@@ -1,62 +1,26 @@
-# Original binary string
-binary_str = '1010'
+#1) toggled question
 
-# Initialize an empty list to collect toggled bits
-toggled_bits = []
+def toggle_bits(n):
+    binary_rep = bin(n)[2:]
+    toggled_binary = ""
+    for bit in binary_rep:
+        if bit == "1":
+            toggled_binary += "0"
 
-# Iterate over each bit in the binary string
-for bit in binary_str:
-    # Toggle the bit: if bit is '1', toggle to '0'; if bit is '0', toggle to '1'
-    if bit == '1':
-        toggled_bits.append('0')
-    else:
-        toggled_bits.append('1')
+        else:
+            toggled_binary += "1"
 
-# Join the toggled bits list into a string
-toggled_binary_str = ''.join(toggled_bits)
+    result = int(toggled_binary,2)
+    print(toggled_binary)
+    print(binary_rep)
 
-# Print original and toggled binary strings
-print(f"Original binary string: {binary_str}")
-print(f"Toggled binary string:   {toggled_binary_str}")
+    return result
 
 
-Original binary string: 1010
-Toggled binary string:   0101
 
+input_num  =int(input())
+print("Input the Decimal number :",input_num)
+toggled_value = toggle_bits(input_num)
+print("After toggling bits :",toggled_value)
 
-----------------------
-
-def toggle_bits_and_convert(n):
-    if n <= 0:
-        raise ValueError("Input must be a positive integer.")
-
-    # Convert the positive integer to binary string (excluding '0b' prefix)
-    binary_str = bin(n)[2:]
-
-    # Calculate the length of the binary string
-    num_bits = len(binary_str)
-
-    # Toggle all bits in the binary string
-    toggled_binary_str = ''.join('0' if bit == '1' else '1' for bit in binary_str)
-
-    # Convert the toggled binary string back to integer
-    toggled_value = int(toggled_binary_str, 2)
-
-    return toggled_value
-
-# Example usage with sample input and output
-try:
-    # Input a positive integer (e.g., 10)
-    decimal_input = int(input("Enter a positive integer: "))
     
-    # Call the function to toggle bits and convert
-    result = toggle_bits_and_convert(decimal_input)
-
-    # Print the result after toggling bits
-    print(f"Original number: {decimal_input}")
-    print(f"Binary representation: {bin(decimal_input)[2:]}")
-    print(f"Toggled binary representation: {bin(result)[2:]}")
-    print(f"Result after toggling bits: {result}")
-
-except ValueError as ve:
-    print(ve)
